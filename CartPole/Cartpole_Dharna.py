@@ -13,14 +13,14 @@ import gym
 import time
 import random
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from collections import defaultdict
 
 
 # In[2]:
 
 
-env = gym.make('CartPole-v0')
+# env = gym.make('CartPole-v0')
 
 
 # `Observation`: 
@@ -60,33 +60,25 @@ env = gym.make('CartPole-v0')
 
 # In[4]:
 
-
-for i_episode in range(1):
-    observation = env.reset()
-    act=1
-    for t in range(200):
-        env.render()
-        action = env.action_space.sample()
-        #print(action)
-        observation, reward, done, info = env.step(act)
-        #print(observation, reward, done)
-        time.sleep(0.1)
-        act = random.randint(0,1)
-        if done:
-            print("Episode finished after {} timesteps".format(t+1))
-            break
-env.close()
+#def run_random():
+    # for i_episode in range(1):
+    #     observation = env.reset()
+    #     act=1
+    #     for t in range(200):
+    #         env.render()
+    #         action = env.action_space.sample()
+    #         #print(action)
+    #         observation, reward, done, info = env.step(act)
+    #         #print(observation, reward, done)
+    #         time.sleep(0.1)
+    #         act = random.randint(0,1)
+    #         if done:
+    #             print("Episode finished after {} timesteps".format(t+1))
+    #             break
+    # env.close()
 
 
 # In[5]:
-
-
-print(env.observation_space)
-print(env.action_space)
-
-
-# In[124]:
-
 
 def discritize(CVB=(-3, 3), PVB=(-3, 3)):
     """
@@ -115,6 +107,11 @@ def discritize(CVB=(-3, 3), PVB=(-3, 3)):
 # In[125]:
 
 
+#This is global because I Don't have to have to keep calling
+# the discritize function or continually pass it in to 
+# the getDiscreteStateFromObs function. 
+# If this were proper software, I'd probably just pass in the 
+# discritized spaces.
 cps, cvs, pas = discritize()
 
 
@@ -163,8 +160,8 @@ def getDiscreteStateFromObs(obs):
 # In[10]:
 
 
-state = getDiscreteStateFromObs(env.reset())
-state
+# state = getDiscreteStateFromObs(env.reset())
+# state
 
 
 # ## MC control
@@ -281,7 +278,7 @@ def mc_control_GLIE(env, num_episodes, alpha=1.0, gamma=1.0):
                 
                 Q[state][action] += alpha*(G - Q[state][action])
                 
-    #create our policy, piPrime based on our final Q table. 
+    #Greedily create our policy, piPrime based on our final Q table. 
     policy = dict((k,np.argmax(v)) for k, v in Q.items())
             
     return policy, Q
@@ -317,6 +314,9 @@ def mc_control_GLIE(env, num_episodes, alpha=1.0, gamma=1.0):
 
 
 if __name__ == "__main__":
+    
+    env = gym.make('CartPole-v0')
+
     
     start = time.time()
     policy_glie, Q_glie = mc_control_GLIE(env, 150000, 0.01)
