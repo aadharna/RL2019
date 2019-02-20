@@ -298,19 +298,19 @@ def mc_control_GLIE(env, num_episodes, alpha=1.0, gamma=1.0):
 # In[ ]:
 
 
-for i_episode in range(1):
-    observation = env.reset()
-    for t in range(250):
-        env.render()
-        state = getDiscreteStateFromObs(observation)
-        action = policy_glie[state]
-        observation, reward, done, info = env.step(action)
-        time.sleep(0.1)
-        if done:
-            print("final state: {}".format(getDiscreteStateFromObs(observation)))
-            print("Episode finished after {} timesteps".format(t+1))
-            break
-env.close()
+# for i_episode in range(1):
+#     observation = env.reset()
+#     for t in range(250):
+#         env.render()
+#         state = getDiscreteStateFromObs(observation)
+#         action = policy_glie[state]
+#         observation, reward, done, info = env.step(action)
+#         time.sleep(0.1)
+#         if done:
+#             print("final state: {}".format(getDiscreteStateFromObs(observation)))
+#             print("Episode finished after {} timesteps".format(t+1))
+#             break
+# env.close()
 
 
 # In[123]:
