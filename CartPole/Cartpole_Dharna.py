@@ -12,6 +12,7 @@ import sys
 import gym
 import time
 import random
+import pickle
 import numpy as np
 #import matplotlib.pyplot as plt
 from collections import defaultdict
@@ -312,15 +313,28 @@ def mc_control_GLIE(env, num_episodes, alpha=1.0, gamma=1.0):
 
 # In[123]:
 
+def save_obj(obj, name):
+    with open(name + '.pkl', 'wb') as f:
+        pickle.dump(obj, f, pickle.HIGHEST_PROTOCOL)
+
+def load_obj(name):
+    with open(name + '.pkl', 'rb') as f:
+        return pickle.load(f)
+
 
 if __name__ == "__main__":
     
     env = gym.make('CartPole-v0')
 
     
-    start = time.time()
-    policy_glie, Q_glie = mc_control_GLIE(env, 150000, 0.01)
-    print("learning time: ", time.time() - start) 
+#     start = time.time()
+#     policy_glie, Q_glie = mc_control_GLIE(env, 150000, 0.01)
+#     print("learning time: ", time.time() - start) 
+    
+    
+    policy_glie = load_obj("policyPi_cartpole")
+    
+    
     
     for i_episode in range(1):
         observation = env.reset()
