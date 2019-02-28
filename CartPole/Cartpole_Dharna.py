@@ -14,7 +14,7 @@ import time
 import random
 import pickle
 import numpy as np
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from collections import defaultdict
 
 
@@ -208,7 +208,7 @@ def generate_episode_from_policy(env, policy):
     #continue until we are told to stop.
     while True:
         #random choice if the state has not been seen before
-        # It will get a value update on the next pass. 
+        # It will get a value update on the next episodic pass. 
         if state not in policy:
             policy[state] *= 1/nA
             
@@ -244,7 +244,8 @@ def mc_control_GLIE(env, num_episodes, alpha=1.0, gamma=1.0):
     # initialize empty dictionaries of arrays
     #Q[state][action]
     Q = defaultdict(lambda: np.zeros(nA))
-    #N = defaultdict(lambda: defaultdict(int))  
+    #N = defaultdict(lambda: defaultdict(int)) 
+    episode_lengths = []
     
     for i_episode in range(1, num_episodes+1):
         # monitor progress
@@ -252,12 +253,18 @@ def mc_control_GLIE(env, num_episodes, alpha=1.0, gamma=1.0):
             print("\rEpisode {}/{}.".format(i_episode, num_episodes), end="")
             sys.stdout.flush()
         
+        #This slows down the rate of decay of epsilon so that 
+        # our agent has sufficient time to explore the space before
+        # we commit to what we have learned as our policy. 
+        # In fact, to ensure that we can always year, I 
+        #  put a limit on the decay to 20 percent. This was probably a bit excessive,
+        #  but it can't really hurt us, we'll just take slightly longer to know we're at the optimal Q/policy.
         epsilon = max(1.0/((i_episode/8000)+1), 0.2)
 
         policy = e_greedy_policy_creation(Q, epsilon, nA)
         
         episode = generate_episode_from_policy(env, policy)
-        
+        episode_lengths.append(len(episode))
         seen = []
         
         #If I had written every-visit MC control, I could have actually 
@@ -282,33 +289,7 @@ def mc_control_GLIE(env, num_episodes, alpha=1.0, gamma=1.0):
     #Greedily create our policy, piPrime based on our final Q table. 
     policy = dict((k,np.argmax(v)) for k, v in Q.items())
             
-    return policy, Q
-
-
-# In[ ]:
-
-
-# start = time.time()
-# policy_glie, Q_glie = mc_control_GLIE(env, 150000, 0.01)
-# print("learning time: ", time.time() - start)
-
-
-# In[ ]:
-
-
-# for i_episode in range(1):
-#     observation = env.reset()
-#     for t in range(250):
-#         env.render()
-#         state = getDiscreteStateFromObs(observation)
-#         action = policy_glie[state]
-#         observation, reward, done, info = env.step(action)
-#         time.sleep(0.1)
-#         if done:
-#             print("final state: {}".format(getDiscreteStateFromObs(observation)))
-#             print("Episode finished after {} timesteps".format(t+1))
-#             break
-# env.close()
+    return policy, Q, episode_lengths
 
 
 # In[123]:
@@ -326,12 +307,16 @@ if __name__ == "__main__":
     
     env = gym.make('CartPole-v0')
 
-    
+#     UNCOMMENT BELOW CODE TO LEARN A NEW POLICY.
+#
 #     start = time.time()
-#     policy_glie, Q_glie = mc_control_GLIE(env, 150000, 0.01)
+#     policy_glie, Q_glie, episode_lengths = mc_control_GLIE(env, 150000, 0.01)
 #     print("learning time: ", time.time() - start) 
+#     save_obj("Lyons_cartpole_policy_Dharna")
+#     plt.plot(episode_lengths)
     
     
+    #load my saved policy. ASSUMES THE POLICY PKL FILE IS IN THE SAME DIRECTORY AS THIS FILE.
     policy_glie = load_obj("policyPi_cartpole")
     
     

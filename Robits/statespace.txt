@@ -1,0 +1,12 @@
+
+
+Useful metrics for state space:
+
+	Define a min distance value where if something important is in the distance, then we take note of it.
+
+		-distance from robot_i to other robot_j
+		-angle between i and j
+	
+
+		-distance to a wall.
+	If there is nothing in that circle of interest, then we create a "blank" state. 
