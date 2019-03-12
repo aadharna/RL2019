@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e68527b5-34de-455c-b3da-73f30fc9988e" name="Default Changelist" comment="" />
+    <list default="true" id="e68527b5-34de-455c-b3da-73f30fc9988e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Bellman-DP/Dynamic_Programming.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bellman-DP/check_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bellman-DP/frozenlake.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bellman-DP/plot_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="525" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -22,6 +29,9 @@
     <findStrings>
       <find>epsilon</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -38,11 +48,13 @@
     <option name="width" value="2400" />
     <option name="height" value="1536" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -54,7 +66,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -166,7 +177,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="32" width="2400" height="1536" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23940678" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2368644" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -177,7 +188,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32973805" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -216,10 +227,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bandit/banditsVis.py">
+    <entry file="file://$PROJECT_DIR$/Bandit/banditsVis.py" />
+    <entry file="file://$PROJECT_DIR$/CliffWalking/Temporal_Difference.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12625">
-          <caret line="505" column="22" selection-start-line="505" selection-start-column="22" selection-end-line="505" selection-end-column="22" />
+        <state relative-caret-position="-9199">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#278#288#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
