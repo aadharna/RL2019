@@ -40,3 +40,7 @@ later has come.
     - IRL
   - GANs, IRL, and Energy Based Models -- Finn et al
   - Imitation Learning with Concurrent action in 3D Games -- Harmer et al
+
+
+----  
+Sadly, I cannot recall where I found the picture of Baymax from. Credit is not mine on that. 
