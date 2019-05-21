@@ -38,6 +38,8 @@ later has come.
     - Latent Variable Models
     - Reframing Control as Probablistic Inference
     - IRL
+      - Margin Based  <-- introduced
+      - Entropy Based <-- focused on
   - GANs, IRL, and Energy Based Models -- Finn et al
   - Imitation Learning with Concurrent action in 3D Games -- Harmer et al
 
