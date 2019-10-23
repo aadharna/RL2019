@@ -45,4 +45,5 @@ later has come.
 
 ```
 ----  
-Sadly, I cannot recall where I found the picture of Baymax from. Credit is not mine on that. 
+
+Edit: FOUND THE BAYMAX PHOTO: Came from: https://github.com/hill-a/stable-baselines
